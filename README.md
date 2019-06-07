@@ -1,2 +1,0 @@
-# CalendarModule
-Created with CodeSandbox
