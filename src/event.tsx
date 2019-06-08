@@ -2,7 +2,9 @@ import * as React from "react";
 import { render } from "react-dom";
 import { Link } from "@reach/router";
 
-export const Event = () => {
+interface Props {}
+
+const Event: React.FunctionComponent<Props> = props => {
   return (
     <div>
       <div>Name</div>
@@ -11,3 +13,5 @@ export const Event = () => {
     </div>
   );
 };
+
+export default Event;
