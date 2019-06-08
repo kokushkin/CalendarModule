@@ -1,8 +1,8 @@
 import * as React from "react";
 import { render } from "react-dom";
 import { Router } from "@reach/router";
-import Event from "./event";
-import Events from "./events";
+import CalendarListOfEvents from "./calendar-list-of-events";
+import CalendarEvent from "./calendar-event";
 
 import "./styles.css";
 
@@ -12,8 +12,8 @@ const App: React.FunctionComponent<Props> = props => {
   return (
     <div>
       <Router>
-        <Events path="/" />
-        <Event path="/event" />
+        <CalendarListOfEvents path="/" />
+        <CalendarEvent path="/calendar-event" />
       </Router>
     </div>
   );

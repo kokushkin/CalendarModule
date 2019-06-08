@@ -4,7 +4,7 @@ import { Link } from "@reach/router";
 
 interface Props {}
 
-const Event: React.FunctionComponent<Props> = props => {
+const CalendarEvent: React.FunctionComponent<Props> = props => {
   return (
     <div>
       <div>Name</div>
@@ -14,4 +14,4 @@ const Event: React.FunctionComponent<Props> = props => {
   );
 };
 
-export default Event;
+export default CalendarEvent;

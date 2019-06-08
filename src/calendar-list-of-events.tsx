@@ -9,26 +9,26 @@ import { Link } from "@reach/router";
 
 interface Props {}
 
-const Events: React.FunctionComponent<Props> = props => {
+const CalendarListOfEvents: React.FunctionComponent<Props> = props => {
   return (
     <ul className="list-group">
       <li className="list-group-item">
-        <Link to="event">Boat Party - 00/00/00 at 21:00</Link>
+        <Link to="/calendar-event">Boat Party - 00/00/00 at 21:00</Link>
       </li>
       <li className="list-group-item">
-        <Link to="/event">Cristmas Party - 00/00/00 at 21:00</Link>
+        <Link to="/calendar-event">Cristmas Party - 00/00/00 at 21:00</Link>
       </li>
       <li className="list-group-item">
-        <Link to="/event">Managment Metting - 00/00/00 at 21:00</Link>
+        <Link to="/calendar-event">Managment Metting - 00/00/00 at 21:00</Link>
       </li>
       <li className="list-group-item">
-        <Link to="/event">1/4 Presentation - 00/00/00 at 21:00</Link>
+        <Link to="/calendar-event">1/4 Presentation - 00/00/00 at 21:00</Link>
       </li>
       <li className="list-group-item">
-        <Link to="/event">Kids Party - 00/00/00 at 21:00</Link>
+        <Link to="/calendar-event">Kids Party - 00/00/00 at 21:00</Link>
       </li>
     </ul>
   );
 };
 
-export default Events;
+export default CalendarListOfEvents;
