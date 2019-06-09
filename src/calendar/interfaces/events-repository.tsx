@@ -4,6 +4,6 @@ import {
 } from "./calendar-event-data";
 
 export interface IEventsRepository {
-  getListOfEvents(): CalendarEventData[];
-  getEventDescription(id: string): CalendarEventDataDescription;
+  getListOfEvents(): Promise<CalendarEventData[]>;
+  getEventDescription(id: string): Promise<CalendarEventDataDescription>;
 }

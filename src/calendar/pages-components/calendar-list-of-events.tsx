@@ -3,32 +3,45 @@ import $ from "jquery";
 import Popper from "popper.js";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-import * as React from "react";
+import React, { FunctionComponent, useState, useEffect } from "react";
 import { render } from "react-dom";
 import { Link } from "@reach/router";
 import { IEventsRepository } from "../interfaces/events-repository";
+import { CalendarEventData } from "../interfaces/calendar-event-data";
+
+//I couldn't believe that we have no time difference out of the box.
+//But looks like so. If find some nmp package - change this
+const friendlyDateTime = (eventDateTime: Date): string => {
+  const eventStartTotalMillisecondsUTC = eventDateTime.getTime();
+  const currentTotalMillisecondsUTC = new Date().getTime();
+  const diffInMs = eventStartTotalMillisecondsUTC - currentTotalMillisecondsUTC;
+  const diffInDays = Math.ceil(diffInMs / (1000 * 3600 * 24));
+  const diffInHours = Math.ceil(diffInMs / (1000 * 3600));
+
+  if (diffInHours < 24) return `in ${diffInHours} hours`;
+
+  if (diffInDays < 7) return `in ${diffInDays} days`;
+  else return eventDateTime.toString();
+};
 
 interface Props {
   header: string;
   repository: IEventsRepository;
 }
 
+interface StateEventsData {
+  events: CalendarEventData[];
+}
+
 const CalendarListOfEvents: React.FunctionComponent<Props> = props => {
-  //I couldn't believe that we have no time difference out of the box.
-  //But looks like so. If find some nmp package - change this
-  const friendlyDateTime = (eventDateTime: Date): string => {
-    const eventStartTotalMillisecondsUTC = eventDateTime.getTime();
-    const currentTotalMillisecondsUTC = new Date().getTime();
-    const diffInMs =
-      eventStartTotalMillisecondsUTC - currentTotalMillisecondsUTC;
-    const diffInDays = Math.ceil(diffInMs / (1000 * 3600 * 24));
-    const diffInHours = Math.ceil(diffInMs / (1000 * 3600));
-
-    if (diffInHours < 24) return `in ${diffInHours} hours`;
-
-    if (diffInDays < 7) return `in ${diffInDays} days`;
-    else return eventDateTime.toString();
-  };
+  const [data, setData] = useState<StateEventsData>({ events: [] });
+  useEffect(() => {
+    const fetchData = async () => {
+      const events = await props.repository.getListOfEvents();
+      setData({ events: events });
+    };
+    fetchData();
+  }, [props]);
 
   return (
     <div className="container">
@@ -38,7 +51,7 @@ const CalendarListOfEvents: React.FunctionComponent<Props> = props => {
       </ul>
 
       <ul className="list-group">
-        {props.repository.getListOfEvents().map(event => (
+        {data.events.map(event => (
           <li className="list-group-item" key={event.id}>
             <Link to={`/calendar-event/${event.id}`}>
               {event.title} - {friendlyDateTime(event.dateStart)}

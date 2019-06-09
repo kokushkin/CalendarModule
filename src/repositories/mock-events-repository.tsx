@@ -80,13 +80,17 @@ export class MockEventsRepository implements IEventsRepository {
     }
   ];
 
-  getListOfEvents(): CalendarEventData[] {
-    return MockEventsRepository.events;
+  async getListOfEvents(): Promise<CalendarEventData[]> {
+    return new Promise<CalendarEventData[]>(resolve =>
+      resolve(MockEventsRepository.events)
+    );
   }
 
-  getEventDescription(id: string): CalendarEventDataDescription {
-    return MockEventsRepository.eventsDescriptions.find(
-      event => event.id === id
+  async getEventDescription(id: string): Promise<CalendarEventDataDescription> {
+    return new Promise<CalendarEventDataDescription>(resolve =>
+      resolve(
+        MockEventsRepository.eventsDescriptions.find(event => event.id === id)
+      )
     );
   }
 }

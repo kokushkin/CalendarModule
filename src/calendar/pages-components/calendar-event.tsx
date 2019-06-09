@@ -1,36 +1,59 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
 import { Link } from "@reach/router";
 import { IEventsRepository } from "../interfaces/events-repository";
+import { CalendarEventDataDescription } from "../interfaces/calendar-event-data";
 
 interface Props {
   id: string;
   repository: IEventsRepository;
 }
 
+interface StateEventsDescriptionData {
+  eventDescription: CalendarEventDataDescription;
+}
+
 const CalendarEvent: React.FunctionComponent<Props> = props => {
-  let eventData = props.repository.getEventDescription(props.id);
+  const [data, setData] = useState<StateEventsDescriptionData | undefined>({
+    eventDescription: undefined
+  });
+  useEffect(() => {
+    const fetchData = async () => {
+      const eventDescription = await props.repository.getEventDescription(
+        props.id
+        //"0x0102004F76F51FFC644B478A8E4A1B07B44C4E002DC2C6EC8858CA4EBAD82AC879C32C1B"
+      );
+      setData({ eventDescription: eventDescription });
+    };
+    fetchData();
+  }, [props]);
+
+  if (data.eventDescription === undefined) return <div>Progress...</div>;
 
   return (
     <section className="container mt-2">
       <section className="row border-bottom bg-light border-light">
         <div className="col-8">
           <img
-            src={eventData.imageAddress}
-            alt={eventData.title}
+            src={data.eventDescription.imageAddress}
+            alt={data.eventDescription.title}
             className="img-fluid"
           />
         </div>
         <div className="col-4">
           <div className="container mt-2">
             <div className="row">
-              <h6 className="h6">{eventData.dateStart.toDateString()}</h6>
+              <h6 className="h6">
+                {data.eventDescription.dateStart.toDateString()}
+              </h6>
             </div>
             <div className="row">
               <h4 className="dispay-4 text-left">
-                {eventData.title}
+                {data.eventDescription.title}
                 <br />
-                <small className="text-muted">{eventData.organizer}</small>
+                <small className="text-muted">
+                  {data.eventDescription.organizer}
+                </small>
               </h4>
             </div>
           </div>
@@ -56,25 +79,27 @@ const CalendarEvent: React.FunctionComponent<Props> = props => {
       <section className="row">
         <div
           className="col-8"
-          dangerouslySetInnerHTML={{ __html: eventData.description }}
+          dangerouslySetInnerHTML={{
+            __html: data.eventDescription.description
+          }}
         />
         <div className="col-4">
           <section className="m-3">
             <h6 className="h6">DATE AND TIME</h6>
             <div className="text-muted">
-              <div>{eventData.dateStart.toString()} - </div>
-              <div>{eventData.dateEnd.toString()} </div>
+              <div>{data.eventDescription.dateStart.toString()} - </div>
+              <div>{data.eventDescription.dateEnd.toString()} </div>
             </div>
             <a href="">Add to calendar</a>
           </section>
           <section className="m-3">
             <h6 className="h6">LOCATION</h6>
             <div className="text-muted">
-              <div>{eventData.address}</div>
-              <div>{eventData.addAddress}</div>
-              <div>{eventData.city}</div>
-              <div>{eventData.postCode}</div>
-              <div>{eventData.country}</div>
+              <div>{data.eventDescription.address}</div>
+              <div>{data.eventDescription.addAddress}</div>
+              <div>{data.eventDescription.city}</div>
+              <div>{data.eventDescription.postCode}</div>
+              <div>{data.eventDescription.country}</div>
             </div>
             <a href="">View Map</a>
           </section>
