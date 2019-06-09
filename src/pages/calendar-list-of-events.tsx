@@ -6,20 +6,23 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import * as React from "react";
 import { render } from "react-dom";
 import { Link } from "@reach/router";
-import { MockEventsRepository } from "../repositories/mock-events-repository";
+import { IEventsRepository } from "../interfaces/events-repository";
 
-interface Props {}
+interface Props {
+  header: string;
+  repository: IEventsRepository;
+}
 
 const CalendarListOfEvents: React.FunctionComponent<Props> = props => {
   return (
     <div className="container">
       <ul className="list-inline border-bottom border-danger">
         <i className="list-inline-item fa fa-calendar" />
-        <h3 className="list-inline-item p-2">UPCOMING EVENTS</h3>
+        <h3 className="list-inline-item p-2">{props.header}</h3>
       </ul>
 
       <ul className="list-group">
-        {new MockEventsRepository().getListOfEvents().map(event => (
+        {props.repository.getListOfEvents().map(event => (
           <li className="list-group-item">
             <Link to={`/calendar-event/${event.id}`}>
               {event.title} - {event.dateStart.toString()}

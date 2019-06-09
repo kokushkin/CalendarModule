@@ -1,14 +1,15 @@
 import * as React from "react";
 import { render } from "react-dom";
 import { Link } from "@reach/router";
-import { MockEventsRepository } from "../repositories/mock-events-repository";
+import { IEventsRepository } from "../interfaces/events-repository";
 
 interface Props {
   id: string;
+  repository: IEventsRepository;
 }
 
 const CalendarEvent: React.FunctionComponent<Props> = props => {
-  let eventData = new MockEventsRepository().getEventDescription(props.id);
+  let eventData = props.repository.getEventDescription(props.id);
 
   return (
     <section className="container">
