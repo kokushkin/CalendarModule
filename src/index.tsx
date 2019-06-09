@@ -13,7 +13,7 @@ const App: React.FunctionComponent<Props> = props => {
     <div>
       <Router>
         <CalendarListOfEvents path="/" />
-        <CalendarEvent path="/calendar-event" />
+        <CalendarEvent path="/calendar-event/:id" />
       </Router>
     </div>
   );
