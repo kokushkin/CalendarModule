@@ -1,14 +1,15 @@
 
-- adjust mock repository +++
-- regroup and rename all files +++
-- make this thing "the widget should have a heading" +++
-- pass  repository into, like dependency injection (is it wiget our end up goal?) +++
-- take up Calendar into it's own file
-- make UI at least little better on event description page
+- adjust mock repository - READY
+- regroup and rename all files - READY
+- make this thing "the widget should have a heading" - READY
+- pass  repository into, like dependency injection (is it wiget our end up goal?) - READY
+- take up Calendar into it's own file - READY
+- make UI at least little better on event description page - READY
 - change repository. it should be methods that return shallow events. 
   And another method that retoгn detailed description.
 - make this thing "data and time should be displayed as friendly name". 
   Is it only in the list? If not, maybe we need another component.
+- make make fetching data like react hook effect
 
 - send first version and do some consultation
 

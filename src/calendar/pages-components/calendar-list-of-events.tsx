@@ -23,7 +23,7 @@ const CalendarListOfEvents: React.FunctionComponent<Props> = props => {
 
       <ul className="list-group">
         {props.repository.getListOfEvents().map(event => (
-          <li className="list-group-item">
+          <li className="list-group-item" key={event.id}>
             <Link to={`/calendar-event/${event.id}`}>
               {event.title} - {event.dateStart.toString()}
             </Link>
