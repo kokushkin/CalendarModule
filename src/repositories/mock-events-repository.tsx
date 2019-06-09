@@ -10,13 +10,13 @@ export class MockEventsRepository implements IEventsRepository {
       id:
         "0x0102004F76F51FFC644B478A8E4A1B07B44C4E002DC2C6EC8858CA4EBAD82AC879C32C1B",
       title: "Customer Hospitality event",
-      dateStart: new Date("2019-06-06T07:00:00Z")
+      dateStart: new Date("2019-06-10T07:00:00Z")
     },
     {
       id:
         "0x0102004F76F51FFC644B478A8E4A1B07B44C4E002DC2C6EC8858CA4EBAD82AC879C32C1C",
       title: "SHIPPING Insight",
-      dateStart: new Date("2019-10-15T07:00:00Z")
+      dateStart: new Date("2019-06-13T07:00:00Z")
     },
     {
       id:
@@ -32,8 +32,8 @@ export class MockEventsRepository implements IEventsRepository {
         "0x0102004F76F51FFC644B478A8E4A1B07B44C4E002DC2C6EC8858CA4EBAD82AC879C32C1B",
       title: "Customer Hospitality event",
       organizer: "Ioanna Perikleous (BSM-CY)",
-      dateStart: new Date("2019-06-06T07:00:00Z"),
-      dateEnd: new Date("2019-06-06T14:00:00Z"),
+      dateStart: new Date("2019-06-10T07:00:00Z"),
+      dateEnd: new Date("2019-06-10T14:00:00Z"),
       description:
         "<p>\u200b</p><p><strong>BSM Involvement&#58; Host</strong></p><p><strong>Location&#58;&#160;Hamburg</strong></p><p><strong>Date&#58; 06 June, 2019</strong></p>",
       country: "Germany",
@@ -49,8 +49,8 @@ export class MockEventsRepository implements IEventsRepository {
         "0x0102004F76F51FFC644B478A8E4A1B07B44C4E002DC2C6EC8858CA4EBAD82AC879C32C1C",
       title: "SHIPPING Insight",
       organizer: "Maria Perikleous (BSM-CY)",
-      dateStart: new Date("2019-10-15T07:00:00Z"),
-      dateEnd: new Date("2019-10-17T14:00:00Z"),
+      dateStart: new Date("2019-06-10T07:00:00Z"),
+      dateEnd: new Date("2019-06-13T14:00:00Z"),
       description:
         '<p><strong>BSM Involvement&#58; Speaker</strong></p><p><strong>Location&#58;&#160;Stamford</strong></p><p><strong>Date&#58; 15-17 Oct, 2019</strong></p><p><a href="https&#58;//10times.com/shipping-insight-fleet-optimization-conference-and" target="_blank"><strong>Visit the SHIPPINGInsight&#160;website</strong></a><strong>\u200b\u200b</strong></p>',
       country: "United States",
