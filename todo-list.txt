@@ -3,6 +3,7 @@
 - regroup and rename all files +++
 - make this thing "the widget should have a heading" +++
 - pass  repository into, like dependency injection (is it wiget our end up goal?) +++
+- take up Calendar into it's own file
 - make UI at least little better on event description page
 - change repository. it should be methods that return shallow events. 
   And another method that retoгn detailed description.
