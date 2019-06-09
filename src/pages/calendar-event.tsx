@@ -1,7 +1,7 @@
 import * as React from "react";
 import { render } from "react-dom";
 import { Link } from "@reach/router";
-import { MockEventsRepository } from "./events-repository";
+import { MockEventsRepository } from "../repositories/mock-events-repository";
 
 interface Props {
   id: string;

@@ -1,4 +1,5 @@
-import { CalendarEventData, IEventsRepository } from "./calendar-event-data";
+import { IEventsRepository } from "../interfaces/events-repository";
+import { CalendarEventData } from "../interfaces/calendar-event-data";
 
 export class MockEventsRepository implements IEventsRepository {
   static events: CalendarEventData[] = [

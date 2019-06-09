@@ -12,8 +12,3 @@ export interface CalendarEventData {
   postCode: string;
   imageAddress: string;
 }
-
-export interface IEventsRepository {
-  getListOfEvents(): CalendarEventData[];
-  getEventDescription(id: string): CalendarEventData;
-}

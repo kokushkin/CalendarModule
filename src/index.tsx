@@ -1,8 +1,8 @@
 import * as React from "react";
 import { render } from "react-dom";
 import { Router } from "@reach/router";
-import CalendarListOfEvents from "./calendar-list-of-events";
-import CalendarEvent from "./calendar-event";
+import CalendarListOfEvents from "./pages/calendar-list-of-events";
+import CalendarEvent from "./pages/calendar-event";
 
 import "./styles.css";
 
