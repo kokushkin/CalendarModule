@@ -1,8 +1,32 @@
 import { IEventsRepository } from "../calendar/interfaces/events-repository";
-import { CalendarEventData } from "../calendar/interfaces/calendar-event-data";
+import {
+  CalendarEventData,
+  CalendarEventDataDescription
+} from "../calendar/interfaces/calendar-event-data";
 
 export class MockEventsRepository implements IEventsRepository {
   static events: CalendarEventData[] = [
+    {
+      id:
+        "0x0102004F76F51FFC644B478A8E4A1B07B44C4E002DC2C6EC8858CA4EBAD82AC879C32C1B",
+      title: "Customer Hospitality event",
+      dateStart: new Date("2019-06-06T07:00:00Z")
+    },
+    {
+      id:
+        "0x0102004F76F51FFC644B478A8E4A1B07B44C4E002DC2C6EC8858CA4EBAD82AC879C32C1C",
+      title: "SHIPPING Insight",
+      dateStart: new Date("2019-10-15T07:00:00Z")
+    },
+    {
+      id:
+        "0x0102004F76F51FFC644B478A8E4A1B07B44C4E002DC2C6EC8858CA4EBAD82AC879C32C1D",
+      title: "18th Vessel Efficiency & Fuel Management Summit",
+      dateStart: new Date("2019-08-07T07:00:00Z")
+    }
+  ];
+
+  static eventsDescriptions: CalendarEventDataDescription[] = [
     {
       id:
         "0x0102004F76F51FFC644B478A8E4A1B07B44C4E002DC2C6EC8858CA4EBAD82AC879C32C1B",
@@ -60,7 +84,9 @@ export class MockEventsRepository implements IEventsRepository {
     return MockEventsRepository.events;
   }
 
-  getEventDescription(id: string): CalendarEventData {
-    return MockEventsRepository.events.find(event => event.id === id);
+  getEventDescription(id: string): CalendarEventDataDescription {
+    return MockEventsRepository.eventsDescriptions.find(
+      event => event.id === id
+    );
   }
 }

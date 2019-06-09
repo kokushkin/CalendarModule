@@ -1,8 +1,11 @@
 export interface CalendarEventData {
   id: string;
   title: string;
-  organizer: string;
   dateStart: Date;
+}
+
+export interface CalendarEventDataDescription extends CalendarEventData {
+  organizer: string;
   dateEnd: Date;
   description: string;
   country: string;
