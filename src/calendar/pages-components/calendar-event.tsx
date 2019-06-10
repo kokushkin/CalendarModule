@@ -19,7 +19,6 @@ const CalendarEvent: FunctionComponent<Props> = props => {
     const fetchData = async () => {
       const eventDescription = await props.repository.getEventDescription(
         props.id
-        //"0x0102004F76F51FFC644B478A8E4A1B07B44C4E002DC2C6EC8858CA4EBAD82AC879C32C1B"
       );
       setData({ eventDescription: eventDescription });
     };
@@ -30,7 +29,7 @@ const CalendarEvent: FunctionComponent<Props> = props => {
 
   return (
     <section className="container mt-2">
-      <section className="row border-bottom bg-light border-light">
+      <section className="row border-bottom bg-light border-ligh-3">
         <div className="col-sm-8">
           <img
             src={data.eventDescription.imageAddress}
@@ -57,7 +56,7 @@ const CalendarEvent: FunctionComponent<Props> = props => {
           </div>
         </div>
       </section>
-      <section className="row border-bottom border-light align-items-center">
+      <section className="row border-bottom border-light-3 align-items-center">
         <div className="col-8">
           <div className="btn-group btn-group-lg">
             <button className="btn">

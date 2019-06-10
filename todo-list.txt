@@ -12,8 +12,8 @@
 - make fetching data like react hook effect - READY
 - send first version and do some consultation - READY
 
-
 - make better UI (as well as for mobile devices)
+
 - switch to popup
 - download event button (convert to .ICS) - delayed
 - event description scrollbar
