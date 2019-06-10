@@ -31,14 +31,14 @@ const CalendarEvent: FunctionComponent<Props> = props => {
   return (
     <section className="container mt-2">
       <section className="row border-bottom bg-light border-light">
-        <div className="col-8">
+        <div className="col-sm-8">
           <img
             src={data.eventDescription.imageAddress}
             alt={data.eventDescription.title}
             className="img-fluid"
           />
         </div>
-        <div className="col-4">
+        <div className="col-sm-4">
           <div className="container mt-2">
             <div className="row">
               <h6 className="h6">
@@ -75,31 +75,37 @@ const CalendarEvent: FunctionComponent<Props> = props => {
         </div>
       </section>
       <section className="row">
-        <div
-          className="col-8"
-          dangerouslySetInnerHTML={{
-            __html: data.eventDescription.description
-          }}
-        />
-        <div className="col-4">
-          <section className="m-3">
-            <h6 className="h6">DATE AND TIME</h6>
-            <div className="text-muted">
-              <div>{data.eventDescription.dateStart.toString()} - </div>
-              <div>{data.eventDescription.dateEnd.toString()} </div>
+        <div className="col-md-8">
+          <div
+            className="container p-3"
+            dangerouslySetInnerHTML={{
+              __html: data.eventDescription.description
+            }}
+          />
+        </div>
+        <div className="col-md-4">
+          <section className="container">
+            <div className="row">
+              <div className="col-sm-6 col-md-12 p-3">
+                <h6 className="h6">DATE AND TIME</h6>
+                <div className="text-muted">
+                  <div>{data.eventDescription.dateStart.toString()} - </div>
+                  <div>{data.eventDescription.dateEnd.toString()} </div>
+                </div>
+                <a href="">Add to calendar</a>
+              </div>
+              <div className="col-sm-6 col-md-12 p-3">
+                <h6 className="h6">LOCATION</h6>
+                <div className="text-muted">
+                  <div>{data.eventDescription.address}</div>
+                  <div>{data.eventDescription.addAddress}</div>
+                  <div>{data.eventDescription.city}</div>
+                  <div>{data.eventDescription.postCode}</div>
+                  <div>{data.eventDescription.country}</div>
+                </div>
+                <a href="">View Map</a>
+              </div>
             </div>
-            <a href="">Add to calendar</a>
-          </section>
-          <section className="m-3">
-            <h6 className="h6">LOCATION</h6>
-            <div className="text-muted">
-              <div>{data.eventDescription.address}</div>
-              <div>{data.eventDescription.addAddress}</div>
-              <div>{data.eventDescription.city}</div>
-              <div>{data.eventDescription.postCode}</div>
-              <div>{data.eventDescription.country}</div>
-            </div>
-            <a href="">View Map</a>
           </section>
         </div>
       </section>
