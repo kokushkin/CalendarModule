@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FunctionComponent } from "react";
 import { Router } from "@reach/router";
 import CalendarListOfEvents from "./calendar-list-of-events";
 import CalendarEvent from "./calendar-event";
@@ -9,7 +9,7 @@ interface Props {
   repository: IEventsRepository;
 }
 
-const Calendar: React.FunctionComponent<Props> = props => {
+const Calendar: FunctionComponent<Props> = props => {
   return (
     <div>
       <Router>

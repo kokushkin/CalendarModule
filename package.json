@@ -1,5 +1,5 @@
 {
-  "name": "calendarmodule",
+  "name": "calendarmodule-v2",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -9,7 +9,7 @@
     "bootstrap": "4.3.1",
     "jquery": "3.4.1",
     "popper.js": "1.15.0",
-    "react": "16.8.4",
+    "react": "16.8.6",
     "react-dom": "16.8.4",
     "react-scripts": "2.1.3"
   },

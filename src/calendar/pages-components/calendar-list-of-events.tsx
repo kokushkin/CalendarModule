@@ -1,10 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import $ from "jquery";
-import Popper from "popper.js";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
 import React, { FunctionComponent, useState, useEffect } from "react";
-import { render } from "react-dom";
 import { Link } from "@reach/router";
 import { IEventsRepository } from "../interfaces/events-repository";
 import { CalendarEventData } from "../interfaces/calendar-event-data";
@@ -33,7 +30,7 @@ interface StateEventsData {
   events: CalendarEventData[];
 }
 
-const CalendarListOfEvents: React.FunctionComponent<Props> = props => {
+const CalendarListOfEvents: FunctionComponent<Props> = props => {
   const [data, setData] = useState<StateEventsData>({ events: [] });
   useEffect(() => {
     const fetchData = async () => {

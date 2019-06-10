@@ -13,12 +13,12 @@
 
 - send first version and do some consultation
 
-- fix some sintaxis problems (red underlined)
+- event description scrollbar
+- download event button (convert to .ICS)
 -  (is it wiget our end up goal?)
+- fix some sintaxis problems (red underlined) - TRY LATER AGAIN
 - should it be different pages? because I feel like it should be popup,
   and then we pass event descriptions through the props
 - make better UI for mobile devices
 - make all datetimes have distinct view
-- event description scrollbar
-- download event button (convert to .ICS)
 - read events from file added to project (translate json format to our internal one)

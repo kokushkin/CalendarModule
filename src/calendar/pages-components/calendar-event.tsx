@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { render } from "react-dom";
-import { Link } from "@reach/router";
+import React, { useState, useEffect, FunctionComponent } from "react";
 import { IEventsRepository } from "../interfaces/events-repository";
 import { CalendarEventDataDescription } from "../interfaces/calendar-event-data";
 
@@ -13,7 +11,7 @@ interface StateEventsDescriptionData {
   eventDescription: CalendarEventDataDescription;
 }
 
-const CalendarEvent: React.FunctionComponent<Props> = props => {
+const CalendarEvent: FunctionComponent<Props> = props => {
   const [data, setData] = useState<StateEventsDescriptionData | undefined>({
     eventDescription: undefined
   });
