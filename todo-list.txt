@@ -11,12 +11,17 @@
   Is it only in the list? If not, maybe we need another component. - READY
 - make fetching data like react hook effect - READY
 - send first version and do some consultation - READY
+- make better UI (as well as for mobile devices) - READY
+- use Moment.js to count date intervals more handy - READY
 
-- make better UI (as well as for mobile devices)
 
+- download event button (convert to .ICS)
 - switch to popup
-- download event button (convert to .ICS) - delayed
+
 - event description scrollbar
+- what about different time zones?
+- I can't check .ics becouse I don't have Outlook
 - make all datetimes have distinct view
 - fix some sintaxis problems (red underlined) - TRY LATER AGAIN
 - read events from file added to project (translate json format to our internal one)
+

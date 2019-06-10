@@ -6,17 +6,16 @@ import { Link } from "@reach/router";
 import { IEventsRepository } from "../interfaces/events-repository";
 import { CalendarEventData } from "../interfaces/calendar-event-data";
 
-//I couldn't believe that we have no time difference out of the box.
-//But looks like so. If find some nmp package - change this
-const friendlyDateTime = (eventDateTime: Date): string => {
-  const eventStartTotalMillisecondsUTC = eventDateTime.getTime();
-  const currentTotalMillisecondsUTC = new Date().getTime();
-  const diffInMs = eventStartTotalMillisecondsUTC - currentTotalMillisecondsUTC;
-  const diffInDays = Math.ceil(diffInMs / (1000 * 3600 * 24));
-  const diffInHours = Math.ceil(diffInMs / (1000 * 3600));
+import * as moment from "moment";
 
+const friendlyDateTime = (eventDateTime: Date): string => {
+  const eventStartTime = moment.utc(eventDateTime.toString());
+  const currentTime = moment.utc(new Date().toString());
+
+  const diffInHours = eventStartTime.diff(currentTime, "h");
   if (diffInHours < 24) return `in ${diffInHours} hours`;
 
+  const diffInDays = eventStartTime.diff(currentTime, "day");
   if (diffInDays < 7) return `in ${diffInDays} days`;
   else return eventDateTime.toString();
 };
