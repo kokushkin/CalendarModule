@@ -1,6 +1,8 @@
 import React, { useState, useEffect, FunctionComponent } from "react";
 import { IEventsRepository } from "../interfaces/events-repository";
 import { CalendarEventDataDescription } from "../interfaces/calendar-event-data";
+import { saveAs } from "file-saver";
+import * as ics from "ics";
 
 interface Props {
   id: string;
@@ -59,7 +61,10 @@ const CalendarEvent: FunctionComponent<Props> = props => {
       <section className="row border-bottom border-light-3 align-items-center">
         <div className="col-8">
           <div className="btn-group btn-group-lg">
-            <button className="btn">
+            <button
+              className="btn"
+              onClick={() => downloadEvent(data.eventDescription)}
+            >
               <i className="fa fa-download text-info" />
             </button>
             <button className="btn">
@@ -111,5 +116,39 @@ const CalendarEvent: FunctionComponent<Props> = props => {
     </section>
   );
 };
+
+function downloadEvent(eventDescription: CalendarEventDataDescription) {
+  const icsEvent = {
+    start: [
+      eventDescription.dateStart.getFullYear(),
+      eventDescription.dateStart.getMonth(),
+      eventDescription.dateStart.getDay(),
+      eventDescription.dateStart.getHours(),
+      eventDescription.dateStart.getMinutes()
+    ],
+    end: [
+      eventDescription.dateEnd.getFullYear(),
+      eventDescription.dateEnd.getMonth(),
+      eventDescription.dateEnd.getDay(),
+      eventDescription.dateEnd.getHours(),
+      eventDescription.dateEnd.getMinutes()
+    ],
+    title: eventDescription.title,
+    description: eventDescription.description,
+    organizer: { name: eventDescription.organizer }
+  };
+
+  ics.createEvent(icsEvent, (error, value) => {
+    if (error) {
+      console.log(error);
+      return;
+    }
+
+    var blob = new Blob([value], { type: "text/plain;charset=utf-8" });
+    saveAs(blob, `${eventDescription.title}.ics`);
+  });
+
+  // console.log(`Event "${eventDescription.title}" has downloaded`);
+}
 
 export default CalendarEvent;

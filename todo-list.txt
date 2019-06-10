@@ -13,12 +13,15 @@
 - send first version and do some consultation - READY
 - make better UI (as well as for mobile devices) - READY
 - use Moment.js to count date intervals more handy - READY
+- make download event button (to convert to .ICS) - READY
 
-
-- download event button (convert to .ICS)
+- use effects for download .ICS
 - switch to popup
 
+
 - event description scrollbar
+- pass more properties through CalendarEventDataDescription to convert them to ".ics"
+- place ics.d.ts in a right place
 - what about different time zones?
 - I can't check .ics becouse I don't have Outlook
 - make all datetimes have distinct view
