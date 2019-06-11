@@ -1,7 +1,7 @@
 import * as React from "react";
 import { render } from "react-dom";
 import { MockEventsRepository } from "./repositories/mock-events-repository";
-import Calendar from "./calendar/pages-components/calendar";
+import Calendar from "./calendar/components/calendar";
 
 import "./styles.css";
 

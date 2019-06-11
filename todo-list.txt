@@ -17,16 +17,18 @@
 - use effects for download .ICS - READY
 - switch to popup - READY
 - we pass mocked id into the description (by now) - READY
+- regroup all components (cut off Router)  - READY
 
-- regroup all components (cut off Router)
- -how does it work simultaneously when "react" works with bootstrap, when we click on the button??
-- where should be modal markup (list or description component)
-- modal header looks a little big
-- event description scrollbar - is it Ready now? Is it what they meant?
+
+- change list's markup (make font looks better)
 - change the cursor, when hover on an event
-- change list's markup (make shrift better)
-- should we pass description through the "props", or leave as it's now?
 
+
+- should we pass description through the "props", or leave as it's now?
+- event description scrollbar - is it Ready now? Is it what they meant?
+- modal header looks a little big
+- where should be modal markup (list or description component)
+- how does it work simultaneously when "react" works with bootstrap, when we click on the button??
 - pass more properties through CalendarEventDataDescription to convert them to ".ics"
 - place ics.d.ts in a right place
 - what about different time zones?

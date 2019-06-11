@@ -34,7 +34,7 @@ interface StateEventsData {
   events: CalendarEventData[];
 }
 
-const CalendarListOfEvents: FunctionComponent<Props> = props => {
+const Calendar: FunctionComponent<Props> = props => {
   const [data, setData] = useState<StateEventsData>({ events: [] });
   const [currentDescriptionId, setCurrentDescriptionId] = useState<
     string | null
@@ -92,4 +92,4 @@ const CalendarListOfEvents: FunctionComponent<Props> = props => {
   );
 };
 
-export default CalendarListOfEvents;
+export default Calendar;
