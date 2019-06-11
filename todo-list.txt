@@ -14,8 +14,8 @@
 - make better UI (as well as for mobile devices) - READY
 - use Moment.js to count date intervals more handy - READY
 - make download event button (to convert to .ICS) - READY
+- use effects for download .ICS - READY
 
-- use effects for download .ICS
 - switch to popup
 
 
@@ -27,4 +27,5 @@
 - make all datetimes have distinct view
 - fix some sintaxis problems (red underlined) - TRY LATER AGAIN
 - read events from file added to project (translate json format to our internal one)
+- try to use another effect for file saving (maybe callback?)
 

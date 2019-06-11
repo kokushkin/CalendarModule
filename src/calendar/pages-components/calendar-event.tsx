@@ -3,39 +3,43 @@ import { IEventsRepository } from "../interfaces/events-repository";
 import { CalendarEventDataDescription } from "../interfaces/calendar-event-data";
 import { saveAs } from "file-saver";
 import * as ics from "ics";
+import { bool } from "prop-types";
 
 interface Props {
   id: string;
   repository: IEventsRepository;
 }
 
-interface StateEventsDescriptionData {
-  eventDescription: CalendarEventDataDescription;
-}
-
 const CalendarEvent: FunctionComponent<Props> = props => {
-  const [data, setData] = useState<StateEventsDescriptionData | undefined>({
-    eventDescription: undefined
-  });
+  const [eventDescription, setEventDescription] = useState<
+    CalendarEventDataDescription | undefined
+  >(undefined);
+  const [download, setDownload] = useState<boolean>(false);
+
   useEffect(() => {
     const fetchData = async () => {
       const eventDescription = await props.repository.getEventDescription(
         props.id
       );
-      setData({ eventDescription: eventDescription });
+      setEventDescription(eventDescription);
     };
     fetchData();
   }, [props]);
 
-  if (data.eventDescription === undefined) return <div>Progress...</div>;
+  useEffect(() => {
+    if (download === true) downloadEvent(eventDescription);
+    return () => setDownload(false);
+  }, [download]);
+
+  if (eventDescription === undefined) return <div>Progress...</div>;
 
   return (
     <section className="container mt-2">
       <section className="row border-bottom bg-light border-ligh-3">
         <div className="col-sm-8">
           <img
-            src={data.eventDescription.imageAddress}
-            alt={data.eventDescription.title}
+            src={eventDescription.imageAddress}
+            alt={eventDescription.title}
             className="img-fluid"
           />
         </div>
@@ -43,15 +47,15 @@ const CalendarEvent: FunctionComponent<Props> = props => {
           <div className="container mt-2">
             <div className="row">
               <h6 className="h6">
-                {data.eventDescription.dateStart.toDateString()}
+                {eventDescription.dateStart.toDateString()}
               </h6>
             </div>
             <div className="row">
               <h4 className="dispay-4 text-left">
-                {data.eventDescription.title}
+                {eventDescription.title}
                 <br />
                 <small className="text-muted">
-                  {data.eventDescription.organizer}
+                  {eventDescription.organizer}
                 </small>
               </h4>
             </div>
@@ -61,10 +65,7 @@ const CalendarEvent: FunctionComponent<Props> = props => {
       <section className="row border-bottom border-light-3 align-items-center">
         <div className="col-8">
           <div className="btn-group btn-group-lg">
-            <button
-              className="btn"
-              onClick={() => downloadEvent(data.eventDescription)}
-            >
+            <button className="btn" onClick={() => setDownload(true)}>
               <i className="fa fa-download text-info" />
             </button>
             <button className="btn">
@@ -83,7 +84,7 @@ const CalendarEvent: FunctionComponent<Props> = props => {
           <div
             className="container p-3"
             dangerouslySetInnerHTML={{
-              __html: data.eventDescription.description
+              __html: eventDescription.description
             }}
           />
         </div>
@@ -93,19 +94,19 @@ const CalendarEvent: FunctionComponent<Props> = props => {
               <div className="col-sm-6 col-md-12 p-3">
                 <h6 className="h6">DATE AND TIME</h6>
                 <div className="text-muted">
-                  <div>{data.eventDescription.dateStart.toString()} - </div>
-                  <div>{data.eventDescription.dateEnd.toString()} </div>
+                  <div>{eventDescription.dateStart.toString()} - </div>
+                  <div>{eventDescription.dateEnd.toString()} </div>
                 </div>
                 <a href="">Add to calendar</a>
               </div>
               <div className="col-sm-6 col-md-12 p-3">
                 <h6 className="h6">LOCATION</h6>
                 <div className="text-muted">
-                  <div>{data.eventDescription.address}</div>
-                  <div>{data.eventDescription.addAddress}</div>
-                  <div>{data.eventDescription.city}</div>
-                  <div>{data.eventDescription.postCode}</div>
-                  <div>{data.eventDescription.country}</div>
+                  <div>{eventDescription.address}</div>
+                  <div>{eventDescription.addAddress}</div>
+                  <div>{eventDescription.city}</div>
+                  <div>{eventDescription.postCode}</div>
+                  <div>{eventDescription.country}</div>
                 </div>
                 <a href="">View Map</a>
               </div>
