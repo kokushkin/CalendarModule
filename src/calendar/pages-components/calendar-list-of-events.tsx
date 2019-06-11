@@ -6,7 +6,12 @@ import { Link } from "@reach/router";
 import { IEventsRepository } from "../interfaces/events-repository";
 import { CalendarEventData } from "../interfaces/calendar-event-data";
 
+import $ from "jquery";
+import Popper from "popper.js";
+import { render } from "react-dom";
+
 import * as moment from "moment";
+import CalendarEvent from "./calendar-event";
 
 const friendlyDateTime = (eventDateTime: Date): string => {
   const eventStartTime = moment.utc(eventDateTime.toString());
@@ -40,22 +45,48 @@ const CalendarListOfEvents: FunctionComponent<Props> = props => {
   }, [props]);
 
   return (
-    <div className="container">
-      <ul className="list-inline border-bottom border-danger">
-        <i className="list-inline-item fa fa-calendar" />
-        <h3 className="list-inline-item p-2">{props.header}</h3>
-      </ul>
+    <>
+      <div className="container">
+        <ul className="list-inline border-bottom border-danger">
+          <i className="list-inline-item fa fa-calendar" />
+          <h3 className="list-inline-item p-2">{props.header}</h3>
+        </ul>
 
-      <ul className="list-group">
-        {data.events.map(event => (
-          <li className="list-group-item" key={event.id}>
-            <Link to={`/calendar-event/${event.id}`}>
+        <ul className="list-group">
+          {data.events.map(event => (
+            <li
+              className="list-group-item"
+              key={event.id}
+              data-toggle="modal"
+              data-target="#myModal"
+            >
               {event.title} - {friendlyDateTime(event.dateStart)}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="modal" id="myModal">
+        <div className="modal-dialog modal-xl modal-dialog-scrollable">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button type="button" className="close" data-dismiss="modal">
+                &times;
+              </button>
+            </div>
+
+            <div className="modal-body">
+              <CalendarEvent
+                repository={props.repository}
+                id={
+                  "0x0102004F76F51FFC644B478A8E4A1B07B44C4E002DC2C6EC8858CA4EBAD82AC879C32C1B"
+                }
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

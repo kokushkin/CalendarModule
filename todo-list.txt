@@ -15,11 +15,17 @@
 - use Moment.js to count date intervals more handy - READY
 - make download event button (to convert to .ICS) - READY
 - use effects for download .ICS - READY
+- switch to popup - READY
 
-- switch to popup
+- we pass mocked id into the description (by now)
+- regroup all components (cut off Router)
+- where should be modal markup (list or description component)
+- modal header looks a little big
+- event description scrollbar - is it Ready now? Is it what they meant?
+- change the cursor, when hover on an event
+- change list's markup (make shrift better)
+- should we pass description through the "props", or leave as it's now?
 
-
-- event description scrollbar
 - pass more properties through CalendarEventDataDescription to convert them to ".ics"
 - place ics.d.ts in a right place
 - what about different time zones?

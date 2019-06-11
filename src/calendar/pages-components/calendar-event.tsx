@@ -34,7 +34,7 @@ const CalendarEvent: FunctionComponent<Props> = props => {
   if (eventDescription === undefined) return <div>Progress...</div>;
 
   return (
-    <section className="container mt-2">
+    <section className="container-fluid mt-2">
       <section className="row border-bottom bg-light border-ligh-3">
         <div className="col-sm-8">
           <img
