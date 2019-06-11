@@ -36,6 +36,9 @@ interface StateEventsData {
 
 const CalendarListOfEvents: FunctionComponent<Props> = props => {
   const [data, setData] = useState<StateEventsData>({ events: [] });
+  const [currentDescriptionId, setCurrentDescriptionId] = useState<
+    string | null
+  >(null);
   useEffect(() => {
     const fetchData = async () => {
       const events = await props.repository.getListOfEvents();
@@ -59,6 +62,7 @@ const CalendarListOfEvents: FunctionComponent<Props> = props => {
               key={event.id}
               data-toggle="modal"
               data-target="#myModal"
+              onClick={() => setCurrentDescriptionId(event.id)}
             >
               {event.title} - {friendlyDateTime(event.dateStart)}
             </li>
@@ -78,9 +82,7 @@ const CalendarListOfEvents: FunctionComponent<Props> = props => {
             <div className="modal-body">
               <CalendarEvent
                 repository={props.repository}
-                id={
-                  "0x0102004F76F51FFC644B478A8E4A1B07B44C4E002DC2C6EC8858CA4EBAD82AC879C32C1B"
-                }
+                id={currentDescriptionId}
               />
             </div>
           </div>

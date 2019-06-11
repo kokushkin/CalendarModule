@@ -16,9 +16,10 @@
 - make download event button (to convert to .ICS) - READY
 - use effects for download .ICS - READY
 - switch to popup - READY
+- we pass mocked id into the description (by now) - READY
 
-- we pass mocked id into the description (by now)
 - regroup all components (cut off Router)
+ -how does it work simultaneously when "react" works with bootstrap, when we click on the button??
 - where should be modal markup (list or description component)
 - modal header looks a little big
 - event description scrollbar - is it Ready now? Is it what they meant?
